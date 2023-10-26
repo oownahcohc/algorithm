@@ -21,14 +21,11 @@ public class 대충_만든_자판 {
             for (String key : keymap) {
                 String[] changeOrder = key.split("");
                 for (int i = 0; i < changeOrder.length; i++) {
-                    Integer count = countMappedByKey.get(changeOrder[i]);
-                    if (count == null) {
-                        countMappedByKey.put(changeOrder[i], i + 1);
-                    } else {
-                        if (count > i + 1) {
-                            countMappedByKey.replace(changeOrder[i], i + 1);
-                        }
-                    }
+                    int pressCount = i + 1;
+                    countMappedByKey.putIfAbsent(changeOrder[i], pressCount);
+                    countMappedByKey.computeIfPresent(
+                            changeOrder[i],
+                            (k, count) -> count > pressCount ? pressCount : count);
                 }
             }
 
