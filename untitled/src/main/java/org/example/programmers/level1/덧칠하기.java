@@ -7,7 +7,7 @@ public class 덧칠하기 {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int result = solution.secondSolution(4, 1, new int[]{1, 2, 3, 4});
+        int result = solution.thirdSolution(4, 1, new int[]{1, 2, 3, 4});
         System.out.println(result);
     }
 
@@ -67,6 +67,24 @@ public class 덧칠하기 {
             }
 
             return result;
+        }
+
+        public int thirdSolution(int n, int m, int[] section) {
+            int answer = 0;
+
+            int start = section[0];
+            answer++;
+
+            for (int item : section) {
+                if (start + m > item) {
+                    continue;
+                }
+
+                start = item;
+                answer++;
+            }
+
+            return answer;
         }
     }
 }
