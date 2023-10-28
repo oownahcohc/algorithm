@@ -1,5 +1,7 @@
 package org.example.programmers.level1;
 
+import java.util.stream.IntStream;
+
 public class 크기가_작은_부분문자열 {
 
     public static void main(String[] args) {
@@ -11,14 +13,10 @@ public class 크기가_작은_부분문자열 {
     static class Solution {
 
         public int solution(String t, String p) {
-            int answer = 0;
-            for (int i = 0; i <= t.length() - p.length(); i++) {
-                String substring = t.substring(i, i + p.length());
-                if (Double.parseDouble(substring) <= Double.parseDouble(p)) {
-                    answer++;
-                }
-            }
-            return answer;
+            return (int) IntStream.rangeClosed(0, t.length() - p.length())
+                    .mapToObj(i -> t.substring(i, i + p.length()))
+                    .filter(s -> Double.parseDouble(s) <= Double.parseDouble(p))
+                    .count();
         }
     }
 }
