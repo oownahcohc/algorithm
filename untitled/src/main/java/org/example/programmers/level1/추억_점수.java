@@ -17,25 +17,25 @@ public class 추억_점수 {
         int[] result = solution.solution(name, yearning, photo);
         System.out.println(Arrays.toString(result));
     }
-}
 
-class Solution {
-    public int[] solution(String[] name, int[] yearning, String[][] photo) {
-        Map<String, Integer> nameAndScore = new HashMap<>();
-        for (int i = 0; i < name.length; i++) {
-            nameAndScore.put(name[i], yearning[i]);
-        }
-
-        int[] answer = new int[photo.length];
-        for (int i = 0; i < photo.length; i++) {
-            int sum = 0;
-            for (String n : photo[i]) {
-                Integer score = nameAndScore.getOrDefault(n, 0);
-                sum += score;
+    static class Solution {
+        public int[] solution(String[] name, int[] yearning, String[][] photo) {
+            Map<String, Integer> nameAndScore = new HashMap<>();
+            for (int i = 0; i < name.length; i++) {
+                nameAndScore.put(name[i], yearning[i]);
             }
-            answer[i] = sum;
-        }
 
-        return answer;
+            int[] answer = new int[photo.length];
+            for (int i = 0; i < photo.length; i++) {
+                int sum = 0;
+                for (String n : photo[i]) {
+                    Integer score = nameAndScore.getOrDefault(n, 0);
+                    sum += score;
+                }
+                answer[i] = sum;
+            }
+
+            return answer;
+        }
     }
 }
