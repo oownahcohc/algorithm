@@ -16,14 +16,13 @@ public class 최소직사각형 {
 
 	static class Solution {
 		public int solution(int[][] sizes) {
-			int w = 0;
-			int h = 0;
-			for (int[] cardSize : sizes) {
-				
+			int w = Math.max(sizes[0][0], sizes[0][1]);
+			int h = Math.min(sizes[0][0], sizes[0][1]);
+			for (int i = 1; i < sizes.length; i++) {
+				w = Math.max(Math.max(sizes[i][0], sizes[i][1]), w);
+				h = Math.max(Math.min(sizes[i][0], sizes[i][1]), h);
 			}
-
-			int answer = 0;
-			return answer;
+			return w * h;
 		}
 	}
 }
