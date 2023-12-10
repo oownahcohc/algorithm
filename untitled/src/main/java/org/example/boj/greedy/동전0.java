@@ -1,4 +1,4 @@
-package org.example.boj;
+package org.example.boj.greedy;
 
 import java.util.Scanner;
 
